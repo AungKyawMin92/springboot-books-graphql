@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "600dd327-b9d1-4183-934a-0f0697016260",
+		"name": "springboot-books-graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:9091/book/add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[  \r\n    {\r\n        \"bookId\"\t: 1,\r\n        \"name\"\t: \"Java Book\",\r\n        \"rating\":\t\"4\",\r\n        \"author\" : {\r\n            \"authorId\" : 1,\r\n            \"firstName\" : \"A\",\r\n            \"lastName\" : \"Kyaw\"\r\n        }\r\n    },\r\n    {\r\n        \"bookId\"\t: 2,\r\n        \"name\"\t: \"Angular Book\",\r\n        \"rating\":\t\"4\",\r\n        \"author\" : {\r\n            \"authorId\" : 2,\r\n            \"firstName\" : \"A\",\r\n            \"lastName\" : \"Min\"\r\n        }\r\n    }\r\n]"
+				},
+				"url": {
+					"raw": "localhost:9091/book/add",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"book",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9091/filterBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "query{\r\n    findBookByName(name: \"Java\"){\r\n      name\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9091/filterBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"filterBook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9091/filterBook => Filter by rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "query{\r\n    findBookByRating(rating: 4){\r\n      name\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9091/filterBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"filterBook"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
